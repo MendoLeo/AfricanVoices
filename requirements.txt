@@ -3,5 +3,4 @@ audio_recorder_streamlit
 requests==2.31.0
 numpy==1.26.4
 pydub==0.25.1
-base64
 tempfile
