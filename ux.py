@@ -123,7 +123,7 @@ with tabs[1]:
                     neutral_color="#6aa36f",
                     icon_size="2x",
                     energy_threshold=(-1.0, 1.0),
-                    pause_threshold=5.0,  # Enregistrement fixe de 5 secondes
+                    pause_threshold=180.0,  # Enregistrement fixe de 3 minutes
                     sample_rate=16000,
                                 )
                 
