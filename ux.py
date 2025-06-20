@@ -108,7 +108,7 @@ with tabs[1]:
             with up_col:
                 audio_file = st.file_uploader(
                     "Drop or upload audio",
-                    type=["wav", "mp3", "m4a"],
+                    type=["wav", "mp3", "m4a","opus"],
                     label_visibility="collapsed"
                 )
                 if audio_file is not None:
@@ -121,8 +121,12 @@ with tabs[1]:
                     text="🎙️",
                     recording_color="#e10000",
                     neutral_color="#6aa36f",
-                    icon_size="2x"
-                )
+                    icon_size="2x",
+                    energy_threshold=(-1.0, 1.0),
+                    pause_threshold=5.0,  # Enregistrement fixe de 5 secondes
+                    sample_rate=16000,
+                                )
+                
                 st.markdown("</div>", unsafe_allow_html=True)
                 if recorded_audio is not None:
                     st.session_state["audio_data"] = recorded_audio
