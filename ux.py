@@ -41,7 +41,7 @@ with tabs[0]:
             # Sélection de langue
             tts_lang = st.selectbox(
                 "TTS language",
-                ["English (en)", "French (fr)", "Lingala (lin)", "Ewondo (ewo)", "Bulu (bum)", "Bafia (ksf)"],
+                ["Ewondo (ewo)", "Bulu (bum)", "Bafia (ksf)"],
             )
             tts_lang_code = tts_lang.split("(")[-1].strip(")")
 
@@ -147,9 +147,21 @@ with tabs[1]:
             st.markdown("##### 🌍 Languages", help="Choose the target language and trigger translation.")
 
             s2s_lang = st.selectbox(
-                "Target language", ["fr", "en", "lin", "ewo", "ksf", "bum"],
+                "Source language", [
+                        "français (fr)",
+                        "anglais (en)",
+                        "chinois (zh)",
+                        "espagnol (es)",
+                        "arabe (ar)",
+                        "hindi (hi)",
+                        "portugais (pt)",
+                        "russe (ru)",
+                        "coréen (ko)",
+                        "allemand (de)"
+                        ],
                 label_visibility="collapsed",
             )
+            s2s_lang_code = s2s_lang.split("(")[-1].strip(")")
 
             btn_cols = st.columns([1, 1], gap="medium")
             with btn_cols[0]:
@@ -176,7 +188,7 @@ with tabs[1]:
                         temp.write(st.session_state["audio_data"])
                         temp.flush()
                         files = {"source_audio": open(temp.name, "rb")}
-                        data = {"lang": s2s_lang}
+                        data = {"lang": s2s_lang_code}
 
                         response = requests.post(f"{API_URL}/speech-to-speech/", data=data, files=files)
 
